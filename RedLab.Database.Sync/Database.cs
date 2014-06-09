@@ -26,6 +26,7 @@ namespace RedLab.Database.Sync
 
                         foreach (var file in filesToSync)
                         {
+                            Console.WriteLine("Executing {0}", file);
                             var query = File.ReadAllText(file);
 
                             using (SqlCommand command = new SqlCommand(query, con))
