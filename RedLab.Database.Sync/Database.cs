@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.IO; 
+using System.IO;
+using System.Text;
 
 namespace RedLab.Database.Sync
 {
@@ -27,7 +28,7 @@ namespace RedLab.Database.Sync
                         foreach (var file in filesToSync)
                         {
                             Console.WriteLine("Executing {0}", file);
-                            var query = File.ReadAllText(file);
+                            var query = File.ReadAllText(file, Encoding.GetEncoding("iso-8859-1"));
 
                             using (SqlCommand command = new SqlCommand(query, con))
                             {
